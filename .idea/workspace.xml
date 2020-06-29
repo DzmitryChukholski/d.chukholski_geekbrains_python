@@ -10,7 +10,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="252414a9-4f56-4387-a482-a11c6dad9b86" name="Default Changelist" comment="homework lesson 4" />
+    <list default="true" id="252414a9-4f56-4387-a482-a11c6dad9b86" name="Default Changelist" comment="master commit">
+      <change afterPath="$PROJECT_DIR$/homework_4.1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/homework_4.2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/homework_4.3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/homework_4.4.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/homework_4.5.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/homework_4.6.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/homework_4.7.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Default_Changelist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Default_Changelist.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Default_Changelist1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Default_Changelist1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Default_Changelist2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Default_Changelist2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -271,10 +283,11 @@
     <state width="1084" height="210" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1536.824@0.0.1536.824" timestamp="1591965190852" />
     <state width="1515" height="208" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592393363575" />
     <state width="1899" height="278" key="GridCell.Tab.0.right/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1592915413297" />
-    <state x="277" y="57" key="SettingsEditor" timestamp="1591886815122">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="346" y="72" key="SettingsEditor" timestamp="1592922619927">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824/1920.0.1536.824@0.0.1536.824" timestamp="1591886815122" />
+    <state x="346" y="72" key="SettingsEditor/1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1592922619927" />
     <state x="302" y="119" key="Vcs.Push.Dialog.v2" timestamp="1592385657986">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
