@@ -1,0 +1,6 @@
+Twilight_Sparkle 30000
+Rainbow_Dash 7000
+Fluttershy 15
+Applejack 3500
+Pinkie_Pie 1500
+Rarity 8500

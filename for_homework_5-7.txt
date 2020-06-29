@@ -1,0 +1,6 @@
+uber_cool_corp gmbh 1000000 150000
+cool_company ltd 100000 25000
+ok_company Sp.z.o.o 150000 120000
+not_ok_company ООО 100000 100000
+bad_company OАO 75000 100000
+Worst_company_ever ПАО 0 750000
