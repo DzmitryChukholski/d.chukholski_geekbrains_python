@@ -19,15 +19,15 @@ import time
 
 
 class TrafficLight:
-    color = {'red': 5, 'yellow': 5, 'green': 5}
+    __color = {'red': 5, 'yellow': 5, 'green': 5}
 
     def __init__(self, timeRED, timeYELLOW, timeGREEN):
-        self.color['red'] = timeRED
-        self.color['yellow'] = timeYELLOW
-        self.color['green'] = timeGREEN
+        self.__color['red'] = timeRED
+        self.__color['yellow'] = timeYELLOW
+        self.__color['green'] = timeGREEN
 
     def running(self):
-        for key, value in cycle(TrafficLight.color.items()):
+        for key, value in cycle(TrafficLight.__color.items()):
             print(key, end=' ')
             for i in range(value, 0, -1):
                 print(i, end=' ')
