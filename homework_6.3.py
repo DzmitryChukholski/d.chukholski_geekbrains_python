@@ -12,7 +12,7 @@ class Worker:
     name = ''
     surname = ''
     position = ''
-    income = {'wage': 0, 'bonus': 0}
+    _income = {'wage': 0, 'bonus': 0}
 
 
 class Position(Worker):
@@ -21,7 +21,7 @@ class Position(Worker):
         return self.name + ' ' + self.surname
 
     def get_total_income(self):
-        return self.income['wage'] + self.income['bonus']
+        return self._income['wage'] + self._income['bonus']
 
 
 human1 = Position()

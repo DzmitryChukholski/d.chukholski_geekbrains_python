@@ -8,15 +8,15 @@
 
 
 class Road:
-    lenght = 0
-    width = 0
+    _lenght = 0
+    _width = 0
 
     def __init__(self, lenght, width):
-        self.lenght = lenght
-        self.width = width
+        self._lenght = lenght
+        self._width = width
 
     def mass(self, MassForSM, high):
-        return self.lenght * self.width * MassForSM * high
+        return self._lenght * self._width * MassForSM * high
 
 
 M1 = Road(20, 5000)
