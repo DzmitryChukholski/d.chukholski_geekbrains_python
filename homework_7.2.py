@@ -9,15 +9,23 @@
 Реализовать общий подсчет расхода ткани. Проверить на практике полученные на этом уроке знания:
 реализовать абстрактные классы для основных классов проекта, проверить на практике работу декоратора @property."""
 
+from abc import abstractmethod, ABC
 
-class Clothes:
+
+class Clothes(ABC):
     type = 'clothes'
+
+    @property
+    @abstractmethod
+    def fabric_calc(self):
+        pass
 
 
 class Coat(Clothes):
     type = 'coat'
     V = float()
 
+    @property
     def fabric_calc(self):
         return self.V / 6.5 + 0.5
 
@@ -26,13 +34,14 @@ class Suit(Clothes):
     type = 'suit'
     H = float()
 
+    @property
     def fabric_calc(self):
         return 2 * self.H + 0.3
 
 
 my_coat = Coat()
 my_coat.V = 35
-print(f'Расход ткани на пальто составит {my_coat.fabric_calc():.2f}')
+print(f'Расход ткани на пальто составит {my_coat.fabric_calc:.2f}')
 my_suit = Suit()
 my_suit.H = 170
-print(f'Расход ткани на костюм составит {my_suit.fabric_calc():.2f}')
+print(f'Расход ткани на костюм составит {my_suit.fabric_calc:.2f}')
