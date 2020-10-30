@@ -14,131 +14,170 @@
 БУДУТ ПРИНИМАТЬСЯ С ОЦЕНКОЙ УДОВЛЕТВОРИТЕЛЬНО
 """
 
-# Программы из дз к первому занятию, задание №3
 # Python 3.8, система 64x
+# Поскольку в прошлый раз занимаемый объём памяти получался нулевой для примера я решил взять разные типы сортировки
+# из урока 7, вот только всё равно они показали нулевые результаты. Очень странные реультаты показывают быстрая
+# и вставка, я так полагаю это значит что быстрая лучше всех, а вставка хуже всех. Пытался увеличить размер массива
+# чтобы было нагляднее, вот только пузырёк делался минут 20 и так и не отсортировал, так что пришлось отказаться
 
 from memory_profiler import profile
-
-
-class company:
-    name = str
-    money = int
-
-    def __init__(self, name, money):
-        self.name = name
-        self.money = money
-
-    def __lt__(self, other):
-        return self.money < other.money
-
-    def __str__(self):
-        return f'{self.name} {self.money}'
+import random
 
 
 @profile()
-def first():
-    das_ist_dict = {'Яблочко': 999999, 'Груша': 400000, 'Тракторный завод': -1004, 'ИП Игорь Аркадьевич': 4,
-                    'ООО Синий столб': 68, 'Бабушка на рынке': 312, 'ГазНефтьМеталлПроституткиАлюминийГрупп': 999998}
-    val_1_list = []
-    result = {}
-    for value in das_ist_dict.values():
-        val_1_list.append(value)
-    val_1_list.sort()
-    for i in range(0, 3):
-        temp_val = val_1_list.pop()
-        for key, value in das_ist_dict.items():
-            if value == temp_val:
-                result[key] = value
-    return result
+def fast_sort(lst_obj):
+    def quick_sort(lst_obj):
+        if len(lst_obj) <= 1:
+            return lst_obj
+        else:
+            q = random.choice(lst_obj)
+            L = []
+            M = []
+            R = []
+            for elem in lst_obj:
+                if elem < q:
+                    L.append(elem)
+                elif elem > q:
+                    R.append(elem)
+                else:
+                    M.append(elem)
+            return quick_sort(L) + M + quick_sort(R)
+    return quick_sort
 
 
 @profile()
-def second():
-    das_ist_dict = {'Яблочко': 999999, 'Груша': 400000, 'Тракторный завод': -1004, 'ИП Игорь Аркадьевич': 4,
-                    'ООО Синий столб': 68, 'Бабушка на рынке': 312, 'ГазНефтьМеталлПроституткиАлюминийГрупп': 999998}
-    val_2_dict = {}
-    result = {}
-    for key, value in das_ist_dict.items():
-        val_2_dict[value] = key
-    val_2_list = sorted(val_2_dict, reverse=True)
-    for i in range(0, 3):
-        result[val_2_dict[val_2_list[i]]] = val_2_list[i]
-    return result
+def bubble_sort(lst_obj):
+    n = 1
+    while n < len(lst_obj):
+        for i in range(len(lst_obj)-n):
+            if lst_obj[i] > lst_obj[i+1]:
+                lst_obj[i], lst_obj[i+1] = lst_obj[i+1], lst_obj[i]
+        n += 1
+    return lst_obj
 
 
 @profile()
-def third():
-    jabloczko = company(name='Яблочко', money=999999),
-    grusza = company(name='Груша', money=400000),
-    traktor = company(name='Тракторный завод', money=-1004),
-    ip = company(name='ИП Игорь Аркадьевич', money=4),
-    ooo = company(name='ООО Синий столб', money=68),
-    babuszka = company(name='Бабушка на рынке', money=312),
-    val_3_list = [jabloczko, grusza, traktor, ip, ooo, babuszka]
-    val_3_list.sort(reverse=True)
-    result = []
-    for i in range(0, 3):
-        result.append(val_3_list[i])
-    return result
+def insertion_sort(lst_obj):
+    for i in range(len(lst_obj)):
+        v = lst_obj[i]
+        j = i
+
+        while (lst_obj[j-1] > v) and (j > 0):
+
+            lst_obj[j] = lst_obj[j-1]
+            j = j - 1
+
+        lst_obj[j] = v
+    return lst_obj
 
 
-first()
-second()
-third()
+@profile()
+def cocktail_sort(lst_obj):
+    left = 0
+    right = len(lst_obj) - 1
+    while left <= right:
+        for i in range(left, right):
+            if lst_obj[i] > lst_obj[i+1]:
+                lst_obj[i], lst_obj[i+1] = lst_obj[i+1], lst_obj[i]
+        right -= 1
+        for i in range(right, left, -1):
+            if lst_obj[i-1] > lst_obj[i]:
+                lst_obj[i], lst_obj[i-1] = lst_obj[i-1], lst_obj[i]
+        left += 1
+    return lst_obj
+
+
+unsorted_list = [random.randint(0, 1000) for i in range(1000)]
+print('Быстрая сортировка\n_________________________________________________________________')
+fast_sort(unsorted_list[:])
+print('_________________________________________________________________')
+print('Пузырьковая сортировка\n_________________________________________________________________')
+bubble_sort(unsorted_list[:])
+print('_________________________________________________________________')
+print('Сортировка вставкой\n_________________________________________________________________')
+insertion_sort(unsorted_list[:])
+print('_________________________________________________________________')
+print('Шейкерная сортировка\n_________________________________________________________________')
+cocktail_sort(unsorted_list[:])
+print('_________________________________________________________________')
 
 """
+Быстрая сортировка
+_________________________________________________________________
 Line #    Mem usage    Increment  Occurences   Line Contents
 ============================================================
-    38     18.7 MiB     18.7 MiB           1   @profile()
-    39                                         def first():
-    40     18.7 MiB      0.0 MiB           2       das_ist_dict = {'Яблочко': 999999, 'Груша': 400000, 'Тракторный завод': -1004, 'ИП Игорь Аркадьевич': 4,
-    41     18.7 MiB      0.0 MiB           1                       'ООО Синий столб': 68, 'Бабушка на рынке': 312, 'ГазНефтьМеталлПроституткиАлюминийГрупп': 999998}
-    42     18.7 MiB      0.0 MiB           1       val_1_list = []
-    43     18.7 MiB      0.0 MiB           1       result = {}
-    44     18.7 MiB      0.0 MiB           8       for value in das_ist_dict.values():
-    45     18.7 MiB      0.0 MiB           7           val_1_list.append(value)
-    46     18.7 MiB      0.0 MiB           1       val_1_list.sort()
-    47     18.7 MiB      0.0 MiB           4       for i in range(0, 3):
-    48     18.7 MiB      0.0 MiB           3           temp_val = val_1_list.pop()
-    49     18.7 MiB      0.0 MiB          24           for key, value in das_ist_dict.items():
-    50     18.7 MiB      0.0 MiB          21               if value == temp_val:
-    51     18.7 MiB      0.0 MiB           3                   result[key] = value
-    52     18.7 MiB      0.0 MiB           1       return result
+    25     18.7 MiB     18.7 MiB           1   @profile()
+    26                                         def fast_sort(lst_obj):
+    27     18.7 MiB      0.0 MiB           1       def quick_sort(lst_obj):
+    28                                                 if len(lst_obj) <= 1:
+    29                                                     return lst_obj
+    30                                                 else:
+    31                                                     q = random.choice(lst_obj)
+    32                                                     L = []
+    33                                                     M = []
+    34                                                     R = []
+    35                                                     for elem in lst_obj:
+    36                                                         if elem < q:
+    37                                                             L.append(elem)
+    38                                                         elif elem > q:
+    39                                                             R.append(elem)
+    40                                                         else:
+    41                                                             M.append(elem)
+    42                                                     return quick_sort(L) + M + quick_sort(R)
+    43     18.7 MiB      0.0 MiB           1       return quick_sort
+_________________________________________________________________
 
+Пузырьковая сортировка
+_________________________________________________________________
 Line #    Mem usage    Increment  Occurences   Line Contents
 ============================================================
-    55     18.8 MiB     18.8 MiB           1   @profile()
-    56                                         def second():
-    57     18.8 MiB      0.0 MiB           2       das_ist_dict = {'Яблочко': 999999, 'Груша': 400000, 'Тракторный завод': -1004, 'ИП Игорь Аркадьевич': 4,
-    58     18.8 MiB      0.0 MiB           1                       'ООО Синий столб': 68, 'Бабушка на рынке': 312, 'ГазНефтьМеталлПроституткиАлюминийГрупп': 999998}
-    59     18.8 MiB      0.0 MiB           1       val_2_dict = {}
-    60     18.8 MiB      0.0 MiB           1       result = {}
-    61     18.8 MiB      0.0 MiB           8       for key, value in das_ist_dict.items():
-    62     18.8 MiB      0.0 MiB           7           val_2_dict[value] = key
-    63     18.8 MiB      0.0 MiB           1       val_2_list = sorted(val_2_dict, reverse=True)
-    64     18.8 MiB      0.0 MiB           4       for i in range(0, 3):
-    65     18.8 MiB      0.0 MiB           3           result[val_2_dict[val_2_list[i]]] = val_2_list[i]
-    66     18.8 MiB      0.0 MiB           1       return result
+    46     18.7 MiB     18.7 MiB           1   @profile()
+    47                                         def bubble_sort(lst_obj):
+    48     18.7 MiB      0.0 MiB           1       n = 1
+    49     18.7 MiB      0.0 MiB        1000       while n < len(lst_obj):
+    50     18.7 MiB      0.0 MiB      500499           for i in range(len(lst_obj)-n):
+    51     18.7 MiB      0.0 MiB      499500               if lst_obj[i] > lst_obj[i+1]:
+    52     18.7 MiB      0.0 MiB      252610                   lst_obj[i], lst_obj[i+1] = lst_obj[i+1], lst_obj[i]
+    53     18.7 MiB      0.0 MiB         999           n += 1
+    54     18.7 MiB      0.0 MiB           1       return lst_obj
+_________________________________________________________________
 
+Сортировка вставкой
+_________________________________________________________________
 Line #    Mem usage    Increment  Occurences   Line Contents
 ============================================================
-    69     18.8 MiB     18.8 MiB           1   @profile()
-    70                                         def third():
-    71     18.8 MiB      0.0 MiB           1       jabloczko = company(name='Яблочко', money=999999),
-    72     18.8 MiB      0.0 MiB           1       grusza = company(name='Груша', money=400000),
-    73     18.8 MiB      0.0 MiB           1       traktor = company(name='Тракторный завод', money=-1004),
-    74     18.8 MiB      0.0 MiB           1       ip = company(name='ИП Игорь Аркадьевич', money=4),
-    75     18.8 MiB      0.0 MiB           1       ooo = company(name='ООО Синий столб', money=68),
-    76     18.8 MiB      0.0 MiB           1       babuszka = company(name='Бабушка на рынке', money=312),
-    77     18.8 MiB      0.0 MiB           1       val_3_list = [jabloczko, grusza, traktor, ip, ooo, babuszka]
-    78     18.8 MiB      0.0 MiB           1       val_3_list.sort(reverse=True)
-    79     18.8 MiB      0.0 MiB           1       result = []
-    80     18.8 MiB      0.0 MiB           4       for i in range(0, 3):
-    81     18.8 MiB      0.0 MiB           3           result.append(val_3_list[i])
-    82     18.8 MiB      0.0 MiB           1       return result
+    57     18.7 MiB     18.7 MiB           1   @profile()
+    58                                         def insertion_sort(lst_obj):
+    59     18.7 MiB     -3.3 MiB        1001       for i in range(len(lst_obj)):
+    60     18.7 MiB     -3.2 MiB        1000           v = lst_obj[i]
+    61     18.7 MiB     -3.2 MiB        1000           j = i
+    62                                         
+    63     18.7 MiB  -1671.8 MiB      253610           while (lst_obj[j-1] > v) and (j > 0):
+    64                                         
+    65     18.7 MiB  -1668.5 MiB      252610               lst_obj[j] = lst_obj[j-1]
+    66     18.7 MiB  -1668.6 MiB      252610               j = j - 1
+    67                                         
+    68     18.7 MiB     -3.3 MiB        1000           lst_obj[j] = v
+    69     18.7 MiB     -0.1 MiB           1       return lst_obj
+_________________________________________________________________
 
+Шейкерная сортировка
+_________________________________________________________________
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    72     18.7 MiB     18.7 MiB           1   @profile()
+    73                                         def cocktail_sort(lst_obj):
+    74     18.7 MiB      0.0 MiB           1       left = 0
+    75     18.7 MiB      0.0 MiB           1       right = len(lst_obj) - 1
+    76     18.7 MiB      0.0 MiB         501       while left <= right:
+    77     18.7 MiB      0.0 MiB      250500           for i in range(left, right):
+    78     18.7 MiB      0.0 MiB      250000               if lst_obj[i] > lst_obj[i+1]:
+    79     18.7 MiB      0.0 MiB      126043                   lst_obj[i], lst_obj[i+1] = lst_obj[i+1], lst_obj[i]
+    80     18.7 MiB      0.0 MiB         500           right -= 1
+    81     18.7 MiB      0.0 MiB      250000           for i in range(right, left, -1):
+    82     18.7 MiB      0.0 MiB      249500               if lst_obj[i-1] > lst_obj[i]:
+    83     18.7 MiB      0.0 MiB      126567                   lst_obj[i], lst_obj[i-1] = lst_obj[i-1], lst_obj[i]
+    84     18.7 MiB      0.0 MiB         500           left += 1
+    85     18.7 MiB      0.0 MiB           1       return lst_obj
+_________________________________________________________________
 """
-
-# Исходя из данных замеров можно сказать что все три решения являются эффективными с точки зрения потребляемой памяти
-# Представленные решения не требуют оптимизации по памяти, а при выборе одного из решений следует руководствоваться
-# иными параметрами, например скоростью выполнения
