@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .maindiv {
+            width: 100%;
+            min-height: 200px;
+            display: flex;
+            background-color: antiquewhite;
+            justify-content: space-between;
+        }
+
+        .secondarydiv {
+            width: 30%;
+            min-height: 200px;
+            background-color: aqua;
+            text-align: center;
+        }
+
+        .oncarddiv {
+            background-color: pink;
+            min-height: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 align='center'>The best shop you ever seen*</h1>
+    <p align='center'>приличный внешний вид в условия задачи не входил :D</p>
+    <div class="maindiv">
+        <div class="secondarydiv">
+            <h3>Мясной рулетик</h3>
+            <p>750k</p>
+            <button id='ruletik'>В корзину</button>
+        </div>
+        <div class="secondarydiv">
+            <h3>Газонокосилка</h3>
+            <p>15000k</p>
+            <button id='gazon'>В корзину</button>
+        </div>
+        <div class="secondarydiv">
+            <h3>Кигуруми</h3>
+            <p>4000k</p>
+            <button id='happy'>В корзину</button>
+        </div>
+    </div>
+    <div class="oncarddiv">
+        <h1>Ich bin твоя корзина**</h1>
+        <h3>В твоей корзине находятся:</h3>
+        <p id="inside"></p>
+        <h3>Всё это обойдётся бюджету в:</h3>
+        <p id="price"></p>
+    </div>
+    <footer>
+        <p>*но это не точно</p>
+        <p>**это точно</p>
+    </footer>
+    <script src='script.js'></script>
+</body>
+
+</html>
