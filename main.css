@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;     
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  width: 70px;
+  height: 70px;
+  border: 2px solid black;
+  text-align: center;
+}
+
+td:hover {
+  background: blanchedalmond;
+  cursor: pointer;
+}
+
+div {
+  text-align: center;
+}
+
+.edinayaRossiya {
+  height: 100vh;
+  width: 100vw;
+  background-image: url(https://new.duma.mos.ru/uploads/news/a725907272771579494efe2b19c8fef6a31f12df.jpg);
+  background-size: cover;
+  color: white;
+}
