@@ -1,0 +1,82 @@
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+body {
+    background: url(https://i.pinimg.com/originals/cb/ff/4c/cbff4c80dc2012d3825b276c1ec2d761.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.welcome_stranger {
+    color: white;
+    text-align: center;
+    text-shadow: 2px 0 0 black, -2px 0 0 black, 
+    0 2px 0 black, 0 -2px 0 black, 
+    1px 1px black, -1px -1px 0 black, 
+    1px -1px 0 black, -1px 1px 0 black;
+    font-size: 60px;
+}
+
+.welcome_stranger_p {
+    color: white;
+    text-align: center;
+    text-shadow: 2px 0 0 black, -2px 0 0 black, 
+    0 2px 0 black, 0 -2px 0 black, 
+    1px 1px black, -1px -1px 0 black, 
+    1px -1px 0 black, -1px 1px 0 black;
+    font-size: 30px;
+}
+
+.goods-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.goods-item {
+    min-width: 250px;
+    min-height: 300px;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.weapon_image {
+    width: 200px;
+    height: 200px;
+}
+
+.buy-button{
+    width: 100px;
+    height: 40px;
+    background-color: gainsboro;
+}
+
+.remove-button{
+    width: 100px;
+    height: 40px;
+    background-color: gainsboro;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+.cart-button {
+    width: 500px;
+    height: 50px;
+    background-color: gainsboro;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.cart-button-div {
+    display: flex;
+    justify-content: space-around;
+}
